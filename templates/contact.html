@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+{% block header %}
+<h1>Contact Me </h1>
+<p>Posted by <span class="glyphicon glyphicon-user"></span> <a href="/about">Maor Goaz</a> on <span class="glyphicon glyphicon-time"></span> 2016-07-31 &nbsp;<img src="/static/pictures/tag.png" height="20" width="20"> &nbsp;System Messages</p>
+{% endblock %}
+
+{% block middle_area %}
+	<p class="lead">{{ post['lead']|safe }} </p>
+						<div class='well'>
+		<form action="{{ url_for('contact_me') }}" method="post">
+			<div class='form-group'>
+				<label for='contactName'>Name</label>
+				<input type='SEARCH' class='form-control' id='contactName' name='contactName' placeholder='Enter your name'>
+			</div>
+			<div class='form-group'>
+				<label for='contactEmail'>Email</label>
+				<input type='email' class='form-control' id='contactEmail' name='contactEmail' placeholder='Enter email'>
+				<p class='help-block'>Make sure you use a valid email address</p>
+			</div>
+			<div class='form-group'>
+				<label for='contactComment'>Message</label>
+					<textarea class='form-control' id='contactComment' name='contactComment'></textarea>
+			</div>
+			<button type='submit' class="btn btn-default">Submit</button>
+		</form>
+	</div>
+	{% if success %}
+		<center><h3> Thank you. Your message has been sent successfully. </h3></center>
+	{% elif failure %}
+		<center><h3> failed to send mail: <br>{{ failure_reason }} </h3></center>
+	{% endif %}
+{% endblock %}
