@@ -11,6 +11,8 @@ db = SQLAlchemy(app)
 
 engine = create_engine(con)
 
+print 'Works until here 1'
 print engine.connect()
-
+print 'Works until here 2'
 print engine.name
+print 'Works until here 3'
